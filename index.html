@@ -3,54 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hey You</title>
+  <title>Just for You 💖</title>
   <style>
     body {
-      background: #0f0c29;
-      background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      color: white;
-      text-align: center;
+      padding: 0;
       overflow: hidden;
+      background: linear-gradient(to top right, #2c003e, #000000);
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      position: relative;
     }
-    .message {
-      font-size: 1.6em;
-      animation: fadeInUp 2s ease-in-out;
+
+    .container {
+      z-index: 2;
+      max-width: 90%;
     }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    .text {
+      font-size: 1.8em;
+      animation: typing 4s steps(40, end), blink 0.8s step-end infinite alternate;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #fff;
+      display: inline-block;
+      margin-bottom: 20px;
     }
+
     .heart {
-      font-size: 3em;
-      animation: pulse 1s infinite;
+      font-size: 3rem;
+      animation: pulse 1.5s infinite;
     }
+
     @keyframes pulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+      50% { transform: scale(1.3); }
       100% { transform: scale(1); }
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .floating-hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .floating-hearts span {
+      position: absolute;
+      color: #ff6ec7;
+      font-size: 1.5rem;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div>
-    <div class="message">
-      Hey! Thank you for scanning this QR code.<br>
-      You’ve already made my day brighter just by opening this.<br>
-      Let’s talk more sometime?
-    </div>
+  <div class="container">
+    <div class="text">Hey! Thanks for scanning this. 💌 You just made my day better.</div>
     <div class="heart">❤️</div>
+  </div>
+
+  <div class="floating-hearts">
+    <span style="left: 10%; animation-delay: 0s;">💖</span>
+    <span style="left: 25%; animation-delay: 1s;">💘</span>
+    <span style="left: 40%; animation-delay: 2s;">💕</span>
+    <span style="left: 55%; animation-delay: 3s;">💓</span>
+    <span style="left: 70%; animation-delay: 4s;">💗</span>
+    <span style="left: 85%; animation-delay: 5s;">💞</span>
   </div>
 </body>
 </html>
