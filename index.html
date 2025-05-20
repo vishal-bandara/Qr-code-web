@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>A Sweet Message</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For You 💖</title>
   <style>
-    html, body {
+    /* Animated Background */
+    body {
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #ffdde1, #ee9ca7);
+      height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      overflow: hidden;
+      justify-content: center;
+      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     #message {
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
+      max-width: 600px;
+      padding: 0 20px;
       color: #fff;
-      padding: 20px;
-      max-width: 90%;
-      line-height: 1.6;
-      min-height: 140px;
+      z-index: 2;
+      min-height: 130px;
     }
 
     button {
-      margin-top: 20px;
+      margin-top: 30px;
       padding: 15px 30px;
-      font-size: 1.2rem;
-      background-color: #ff5e78;
-      color: white;
+      font-size: 18px;
       border: none;
       border-radius: 30px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      background-color: #ff5e78;
+      color: white;
       cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
+      z-index: 2;
     }
 
     button:hover {
@@ -48,15 +58,16 @@
 
     .rose {
       position: absolute;
-      width: 50px;
-      height: 50px;
-      background-image: url('https://github.com/vishal-bandara/Qr-code-web/blob/main/%5BCITYPNG.COM%5DDownload%20Red%20Rose%20Flower%20Illustration%20PNG%20-%206000x6000.png');
+      width: 60px;
+      height: 60px;
+      background-image: url('[CITYPNG.COM]Download Red Rose Flower Illustration PNG - 6000x6000.png');
       background-size: cover;
       animation: fall 3s forwards;
+      z-index: 2;
     }
 
     @keyframes fall {
-      0% { transform: translateY(-100px) rotate(0); opacity: 0; }
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 0; }
       50% { opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
@@ -67,7 +78,7 @@
       left: 50%;
       transform: translate(-50%, -50%) scale(0.5);
       opacity: 0;
-      background: white;
+      background-color: white;
       border-radius: 20px;
       padding: 20px;
       text-align: center;
@@ -85,7 +96,7 @@
     }
 
     .flower-popup p {
-      font-size: 18px;
+      font-size: 20px;
       color: #ff5e78;
       margin-top: 10px;
       font-weight: bold;
@@ -98,114 +109,81 @@
       }
     }
 
-    .hearts {
+    .hearts, .falling-hearts {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      z-index: -1;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .heart {
+    .heart, .falling-heart {
       position: absolute;
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
       background: red;
       transform: rotate(45deg);
-      animation: float 10s infinite linear;
     }
 
-    .heart::before,
-    .heart::after {
+    .heart::before, .heart::after,
+    .falling-heart::before, .falling-heart::after {
       content: '';
       position: absolute;
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
       background: red;
       border-radius: 50%;
     }
 
-    .heart::before {
-      top: -7px;
+    .heart::before, .falling-heart::before {
+      top: -7.5px;
       left: 0;
     }
 
-    .heart::after {
-      left: -7px;
+    .heart::after, .falling-heart::after {
+      left: -7.5px;
       top: 0;
     }
 
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(45deg);
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) rotate(45deg);
-        opacity: 0;
-      }
+    .heart {
+      animation: float 10s infinite linear;
     }
 
-    /* Responsive Design */
+    .falling-heart {
+      animation: fallDown 8s infinite linear;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+    }
+
+    @keyframes fallDown {
+      0% { transform: translateY(-10vh) rotate(45deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(110vh) rotate(45deg); opacity: 0; }
+    }
+
     @media (max-width: 768px) {
-      #message {
-        font-size: 1.3rem;
-        padding: 15px;
-      }
-
-      button {
-        font-size: 1rem;
-        padding: 12px 24px;
-      }
-
-      .flower-popup p {
-        font-size: 16px;
-      }
-
-      .rose {
-        width: 40px;
-        height: 40px;
-      }
+      #message { font-size: 1.3rem; }
+      button { font-size: 1rem; padding: 12px 24px; }
     }
 
     @media (max-width: 480px) {
-      #message {
-        font-size: 1.1rem;
-      }
-
-      button {
-        font-size: 0.9rem;
-        padding: 10px 20px;
-      }
-
-      .heart,
-      .heart::before,
-      .heart::after {
-        width: 10px;
-        height: 10px;
-      }
-
-      .flower-popup {
-        padding: 15px;
-      }
-
-      .flower-popup p {
-        font-size: 15px;
-      }
+      #message { font-size: 1.1rem; }
+      button { font-size: 0.9rem; padding: 10px 20px; }
     }
   </style>
 </head>
 <body>
 
   <div class="hearts" id="hearts-container"></div>
+  <div class="falling-hearts" id="falling-hearts-container"></div>
 
   <div id="message"></div>
-
   <button onclick="showRoses()">Click Here</button>
 
   <script>
@@ -234,32 +212,34 @@
 
       const popup = document.createElement('div');
       popup.classList.add('flower-popup');
-
-      const img = document.createElement('img');
-      img.src = 'https://github.com/vishal-bandara/Qr-code-web/blob/main/%5BCITYPNG.COM%5DDownload%20Red%20Rose%20Flower%20Illustration%20PNG%20-%206000x6000.png';
-      img.alt = 'Flowers for you';
-
-      const text = document.createElement('p');
-      text.textContent = 'This is for you chuti nona ❤️';
-
-      popup.appendChild(img);
-      popup.appendChild(text);
+      popup.innerHTML = `
+        <img src="[CITYPNG.COM]Download Red Rose Flower Illustration PNG - 6000x6000.png" />
+        <p>This is for you chuti nona❤️</p>
+      `;
       document.body.appendChild(popup);
-
-      setTimeout(() => {
-        popup.remove();
-      }, 5000);
+      setTimeout(() => popup.remove(), 5000);
     }
 
+    // Floating hearts
     const heartsContainer = document.getElementById('hearts-container');
     for (let i = 0; i < 30; i++) {
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.animationDuration = (5 + Math.random() * 5) + 's';
-      heart.style.opacity = Math.random();
       heart.style.top = Math.random() * 100 + 'vh';
       heartsContainer.appendChild(heart);
+    }
+
+    // Falling hearts
+    const fallingContainer = document.getElementById('falling-hearts-container');
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('falling-heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+      heart.style.top = '-' + (Math.random() * 100) + 'px';
+      fallingContainer.appendChild(heart);
     }
   </script>
 </body>
