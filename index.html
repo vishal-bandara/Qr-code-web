@@ -15,21 +15,22 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      text-align: center;
     }
 
     #message {
-      text-align: center;
       font-size: 1.5rem;
-      max-width: 600px;
+      max-width: 90%;
       padding: 0 20px;
       color: #fff;
       min-height: 130px;
+      line-height: 1.5;
     }
 
     button {
       margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 12px 25px;
+      font-size: 1.1rem;
       border: none;
       border-radius: 30px;
       background-color: #ff5e78;
@@ -37,6 +38,7 @@
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
+      max-width: 80%;
     }
 
     button:hover {
@@ -45,9 +47,9 @@
 
     .rose {
       position: absolute;
-      width: 60px;
-      height: 60px;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Rose_icon.svg/1024px-Rose_icon.svg.png');
+      width: 40px;
+      height: 40px;
+      background-image: url('[CITYPNG.COM]Download Red Rose Flower Illustration PNG - 6000x6000.png');
       background-size: cover;
       animation: fall 3s forwards;
     }
@@ -71,16 +73,18 @@
       animation: popIn 1s ease forwards;
       z-index: 10;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 400px;
     }
 
     .flower-popup img {
-      width: 150px;
+      width: 100%;
       height: auto;
       border-radius: 10px;
     }
 
     .flower-popup p {
-      font-size: 20px;
+      font-size: 18px;
       color: #ff5e78;
       margin-top: 10px;
       font-weight: bold;
@@ -105,8 +109,8 @@
 
     .heart {
       position: absolute;
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
       background: red;
       transform: rotate(45deg);
       animation: float 10s infinite linear;
@@ -116,19 +120,19 @@
     .heart::after {
       content: '';
       position: absolute;
-      width: 15px;
-      height: 15px;
+      width: 12px;
+      height: 12px;
       background: red;
       border-radius: 50%;
     }
 
     .heart::before {
-      top: -7.5px;
+      top: -6px;
       left: 0;
     }
 
     .heart::after {
-      left: -7.5px;
+      left: -6px;
       top: 0;
     }
 
@@ -143,6 +147,44 @@
       100% {
         transform: translateY(-10vh) rotate(45deg);
         opacity: 0;
+      }
+    }
+
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      #message {
+        font-size: 1.2rem;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+
+      .flower-popup p {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #message {
+        font-size: 1rem;
+      }
+
+      button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+
+      .heart,
+      .heart::before,
+      .heart::after {
+        width: 10px;
+        height: 10px;
+      }
+
+      .flower-popup {
+        padding: 15px;
       }
     }
   </style>
@@ -163,7 +205,7 @@
       if (i < text.length) {
         document.getElementById("message").innerHTML += text.charAt(i);
         i++;
-        setTimeout(typeWriter, 50); // Adjust typing speed here
+        setTimeout(typeWriter, 50);
       }
     }
     typeWriter();
@@ -184,7 +226,7 @@
       popup.classList.add('flower-popup');
 
       const img = document.createElement('img');
-      img.src = '[CITYPNG.COM]Download Red Rose Flower Illustration PNG - 6000x6000.png'; // Replace with your own uploaded flower image if you want
+      img.src = '.png';
       img.alt = 'Flowers for you';
 
       const text = document.createElement('p');
