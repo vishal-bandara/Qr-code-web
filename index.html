@@ -4,13 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Just for You 💖</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       padding: 0;
       overflow: hidden;
       background: linear-gradient(to top right, #2c003e, #000000);
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Dancing Script', cursive;
       color: #fff;
       display: flex;
       align-items: center;
@@ -23,11 +27,13 @@
     .container {
       z-index: 2;
       max-width: 90%;
+      padding: 20px;
     }
 
     .text {
-      font-size: 1.8em;
-      animation: typing 4s steps(40, end), blink 0.8s step-end infinite alternate;
+      font-size: 2em;
+      line-height: 1.5;
+      animation: typing 4s steps(60, end), blink 0.8s step-end infinite alternate;
       white-space: nowrap;
       overflow: hidden;
       border-right: 3px solid #fff;
@@ -69,7 +75,7 @@
     .floating-hearts span {
       position: absolute;
       color: #ff6ec7;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       animation: floatUp 6s linear infinite;
       opacity: 0.8;
     }
@@ -87,13 +93,27 @@
         opacity: 0;
       }
     }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .text {
+        font-size: 1.5em;
+        white-space: normal;
+        border-right: none;
+        animation: none;
+      }
+      .heart {
+        font-size: 2.5rem;
+      }
+      .floating-hearts span {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="text">"Hey! Thank you for taking a moment to scan this QR code.</div> <div  It means a lot. I just wanted to say you’ve got an amazing vibe, </div><div and I’d love to get to know you better if you’re up for it."</div><
-
-</div>
+    <div class="text">Hey! Thank you for taking a moment to scan this QR code. It means a lot. I just wanted to say you’ve got an amazing vibe, and I’d love to get to know you better if you’re up for it.</div>
     <div class="heart">❤️</div>
   </div>
 
